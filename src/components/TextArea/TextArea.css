@@ -4,21 +4,24 @@
   position: relative;
 }
 
-.signinInput {
+.txtAreaInput {
   background-color: #eaeaea;
   width: 350px;
-  height: 60px;
+  height: 120px;
   border: none;
   border-radius: 8px;
   margin: 8px 0;
-  padding: 0 20px;
+  padding: 20px;
   position: relative;
   top: 0;
   left: 0;
+  font-family: 'Roboto Slab', serif;
+  color: #534f47;
+  resize: none;
   cursor: pointer;
 }
 
-.signinInput:hover {
+.txtAreaInput:hover {
   background-color: #ccc;
 }
 

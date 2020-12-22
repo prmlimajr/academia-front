@@ -5,7 +5,9 @@ import PrivateRoute from './PrivateRoute';
 
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
-// import Home from '../pages/Home';
+import UserProfile from '../pages/Profile/UserProfile';
+import InstructorProfile from '../pages/Profile/InstructorProfile';
+import Home from '../pages/Home';
 
 export default function Routes() {
   return (
@@ -13,7 +15,9 @@ export default function Routes() {
       <Switch>
         <Route path='/login' component={SignIn} />
         <Route path='/signup' component={SignUp} />
-        {/* <PrivateRoute path='/' component={Home} /> */}
+        <Route path='/athlete' exact component={UserProfile} />
+        <Route path='/instructor' exact component={InstructorProfile} />
+        <PrivateRoute path='/' exact component={Home} />
       </Switch>
     </BrowserRouter>
   );

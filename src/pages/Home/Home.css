@@ -1,0 +1,62 @@
+.mainBg {
+  background: url('/src/assets/img/mainbg.png') no-repeat center center/cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainContainer {
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 30px 50px;
+}
+
+.mainTxt {
+  font-family: 'Roboto Condensed', serif;
+  line-height: 1.5rem;
+  font-size: 1.4rem;
+  margin: 10px 0;
+}
+
+.athletesList {
+  max-height: 600px;
+  overflow: auto;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #0b4455;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+}
+
+.searchBar {
+  width: 820px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.inputSearch {
+  position: absolute;
+  padding: 16px 10px;
+}
+
+.searchBar .search {
+  width: 350px;
+  height: 60px;
+  border: none;
+  border-radius: 8px;
+  padding: 0 40px;
+  background-color: #eaeaea;
+}

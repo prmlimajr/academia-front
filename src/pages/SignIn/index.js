@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { ErrorMessage, Formik, Form, Field } from 'formik';
+import { Link, useHistory } from 'react-router-dom';
 import { login } from '../../api/auth';
-import { Formik, Field, Form } from 'formik';
+
 import * as Yup from 'yup';
 
 import Input from '../../components/Input';
@@ -20,14 +22,19 @@ const schema = Yup.object().shape({
 });
 
 export default function SignIn() {
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
 
-  function handleSubmit(email, password) {
-    login(email, password);
-  }
+  const handleSubmit = useCallback(async (data) => {
+    console.log('data', data);
+    try {
+      await schema.validate(data, { abortEarly: false });
+      // login(email, password);
+      history.push('/profile');
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
 
   return (
     <div className='signinbg'>
@@ -37,36 +44,29 @@ export default function SignIn() {
 
         <Formik
           initialValues={{ email: '', password: '' }}
-          onSubmit={(data) => {
-            setLoading(true);
-            console.log(data);
-            setLoading(false);
-          }}
+          onSubmit={(data) => handleSubmit(data)}
+          validationSchema={schema}
         >
-          {({ values, handleBlur }) => (
-            <Form className='signinForm'>
-              <Field
-                type='email'
-                name='email'
-                label='E-mail'
-                as={Input}
-                validationSchema={schema}
-              />
+          <Form className='signinForm'>
+            <Field type='text' label='E-mail' name='email' as={Input} />
+            <ErrorMessage
+              component='span'
+              name='email'
+              className='validationInput'
+            />
 
-              <Field
-                type='password'
-                name='password'
-                label='Senha'
-                as={Input}
-                validationSchema={schema}
-              />
+            <Field type='password' label='Senha' name='password' as={Input} />
+            <ErrorMessage
+              component='span'
+              name='password'
+              className='validationInput'
+            />
 
-              <Button disabled={loading}>
-                <FiLogIn />
-                ENTRAR
-              </Button>
-            </Form>
-          )}
+            <Button disabled={loading}>
+              <FiLogIn />
+              {loading ? 'Carregando...' : 'ENTRAR'}
+            </Button>
+          </Form>
         </Formik>
 
         <p className='signinTxt'>Esqueci a minha senha.</p>
@@ -74,7 +74,9 @@ export default function SignIn() {
         <div className='yellowLine'></div>
 
         <p className='signinTxt'>Ainda não tem sua conta?</p>
-        <p className='signinTxt'>Faça o seu cadastro aqui!</p>
+        <Link to='/signup' className='signinTxt'>
+          Faça o seu cadastro aqui!
+        </Link>
 
         <img src={LadSoft} alt='LadSoft' className='signinLad' />
       </div>

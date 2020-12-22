@@ -1,5 +1,16 @@
 import React from 'react';
+import { FiLogOut } from 'react-icons/fi';
 
+import Ladsoft from '../../assets/img/ladsoft.png';
+import './Sidebar.css';
 export default function Sidebar() {
-  return <div></div>;
+  return (
+    <div className='sidebar'>
+      <img src={Ladsoft} alt='Ladsoft' className='sidebarLogo' />
+      <div className='row'>
+        <p className='logout'>Sair</p>
+        <FiLogOut size={14} color='#534f47' />
+      </div>
+    </div>
+  );
 }

@@ -33,7 +33,6 @@
 .signinForm {
   display: flex;
   flex-direction: column;
-  margin: 20px 0;
   position: relative;
 }
 
@@ -47,4 +46,10 @@
 .signinLad {
   width: 100px;
   margin: 20px;
+}
+
+.validationInput {
+  color: #ee2929;
+  font-family: 'Roboto Slab', serif;
+  line-height: 1.5rem;
 }

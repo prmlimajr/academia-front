@@ -1,0 +1,48 @@
+.card {
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 700px;
+  border-radius: 8px;
+  padding: 10px 40px;
+  margin: 8px 0;
+  transition: 0.2s;
+  margin-right: 10px;
+}
+
+.card:hover {
+  background-color: #eaeaea;
+}
+
+.athlete {
+  display: flex;
+  flex-direction: column;
+}
+
+.athleteName {
+  color: #000;
+  font-family: 'Roboto Condensed', serif;
+  line-height: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.cardTxt {
+  color: #000;
+  font-family: 'Roboto Condensed', serif;
+  line-height: 1.5rem;
+  margin-top: 5px;
+}
+
+.cardBtn {
+  border-style: none;
+  border-radius: 8px;
+  background-color: #0b4455;
+  color: #fff;
+  font-family: 'Roboto Condensed', serif;
+  line-height: 1.5rem;
+  font-size: 1rem;
+  height: 40px;
+  width: 120px;
+}
