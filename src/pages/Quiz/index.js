@@ -82,17 +82,6 @@ realizar atividade física supervisionado por profissionais de saúde?
                     />
                   </div>
                 </label>
-                </Form>
-
-            </Formik>
-
-            <Formik
-              initialValues={initialValues}
-              onSubmit={(data) => handleSubmit(data)}
-              validationSchema={schema}
-            >
-              <Form className='quizForm'>
-                
 
                 <label className='quizLabel'>
                 2. Você sente dores no peito quando pratica atividade física?
@@ -117,16 +106,7 @@ realizar atividade física supervisionado por profissionais de saúde?
                     />
                   </div>
                 </label>
-                </Form>
-
-            </Formik>
-
-            <Formik
-              initialValues={initialValues}
-              onSubmit={(data) => handleSubmit(data)}
-              validationSchema={schema}
-            >
-              <Form className='profileForm'>
+                
                 <label className='quizLabel'>
                 3. No último mês, você sentiu dores no peito quando praticou atividade física? 
 
@@ -150,16 +130,7 @@ realizar atividade física supervisionado por profissionais de saúde?
                     />
                   </div>
                 </label>
-                </Form>
-
-</Formik>
-                <Formik
-              initialValues={initialValues}
-              onSubmit={(data) => handleSubmit(data)}
-              validationSchema={schema}
-            >
-              <Form className='profileForm'>
-
+                
                 <label className='quizLabel'>
                 4. Você apresenta desequilíbrio devido à tontura e/ ou perda de consciência? 
 
@@ -183,16 +154,7 @@ realizar atividade física supervisionado por profissionais de saúde?
                     />
                   </div>
                 </label>
-                </Form>
-
-</Formik>
-                <Formik
-              initialValues={initialValues}
-              onSubmit={(data) => handleSubmit(data)}
-              validationSchema={schema}
-            >
-              <Form className='profileForm'>
-
+                
                 <label className='quizLabel'>
                 5. Você possui algum problema ósseo ou articular que poderia ser piorado pela atividade
 física? 
@@ -217,17 +179,7 @@ física?
                     />
                   </div>
                 </label>
-                </Form>
-
-</Formik>
-
-                <Formik
-              initialValues={initialValues}
-              onSubmit={(data) => handleSubmit(data)}
-              validationSchema={schema}
-            >
-              <Form className='profileForm'>
-
+                
                 <label className='quizLabel'>
                 6. Você toma atualmente algum medicamento para pressão arterial e/ou problema de
 coração? 
@@ -252,16 +204,7 @@ coração?
                     />
                   </div>
                 </label>
-                </Form>
-
-</Formik>
-                <Formik
-              initialValues={initialValues}
-              onSubmit={(data) => handleSubmit(data)}
-              validationSchema={schema}
-            >
-              <Form className='profileForm'>
-
+                
                 <label className='quizLabel'>
                 7. Sabe de alguma outra razão pela qual você não deve praticar atividade física?
 
@@ -286,7 +229,6 @@ coração?
                   </div>
                 </label>
                   </Form>
-
             </Formik>
                
                
