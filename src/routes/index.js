@@ -7,6 +7,7 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import UserProfile from '../pages/Profile/UserProfile';
 import InstructorProfile from '../pages/Profile/InstructorProfile';
+import Quiz from '../pages/Quiz';
 import Home from '../pages/Home';
 
 export default function Routes() {
@@ -17,6 +18,7 @@ export default function Routes() {
         <Route path='/signup' component={SignUp} />
         <Route path='/athlete' exact component={UserProfile} />
         <Route path='/instructor' exact component={InstructorProfile} />
+        <Route path='/quiz' exact component={Quiz} />
         <PrivateRoute path='/' exact component={Home} />
       </Switch>
     </BrowserRouter>

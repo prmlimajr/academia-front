@@ -1,0 +1,106 @@
+.profilebg {
+    background: url('/src/assets/img/signinbg.png') no-repeat center center/cover;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .profileContainer {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .userPicture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .avatarContainer {
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 150px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .signinContainer{
+      max-width: 800px;
+  }
+  
+  .avatarContainer:hover {
+    background-color: #ccc;
+  }
+  
+  .avatar {
+    height: 150px;
+    width: 150px;
+  }
+  
+  .circle {
+    background-color: #eaeaea;
+    border-radius: 50px;
+    border: solid #fff 1px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+  
+    cursor: pointer;
+  }
+  
+  .avatarBtn {
+    border-style: none;
+    border-radius: 8px;
+    background-color: #eaeaea;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    margin-top: 30px;
+    color: #534f47;
+    font-family: 'Roboto Slab', serif;
+    line-height: 1.5rem;
+  }
+  
+  .avatarBtn:hover {
+    background-color: #ccc;
+  }
+  
+  .userData {
+    margin-left: 20px;
+  }
+  
+  .quizName {
+    color: #534f47;
+    font-family: 'Roboto Slab', serif;
+    line-height: 1.5rem;
+    margin-bottom: 16px;
+  }
+  
+  .quizForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .quizLabel {
+    font-family: 'Roboto Slab', serif;
+    line-height: 1.5rem;
+    font-size: small;
+    margin-left: 10px;
+  }
+  
