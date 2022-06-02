@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import AthleteCard from '../../components/AthleteCard';
 import Search from '../../assets/img/search.svg';
+import Button from '../../components/Button'
 
 import './Home.css';
 import api from '../../services/api';
 import { getUser } from '../../services/auth';
+import { useHistory } from 'react-router-dom';
 
 export default function Home() {
   const [athletes, setAthletes] = useState([])
   const [search, setSearch] = useState('')
+
+  const history = useHistory()
 
   useEffect(() => {
     async function getAthletes () {
@@ -52,6 +56,8 @@ export default function Home() {
             })}
           </ul>
         </div>
+
+        <Button onClick={() => history.push('/athlete')}>Novo Atleta</Button>
       </div>
     </div>
   );

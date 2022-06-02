@@ -40,6 +40,10 @@
   width: 150px;
 }
 
+input[type='file'] {
+  display: none
+}
+
 .circle {
   background-color: #eaeaea;
   border-radius: 50px;

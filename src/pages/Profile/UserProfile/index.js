@@ -5,34 +5,24 @@ import Avatar from '../../../assets/img/account_box.svg';
 import { FaCamera } from 'react-icons/fa';
 import { Formik, Form, Field } from 'formik';
 import Input from '../../../components/Input';
+import api from '../../../services/api'
 
 import './UserProfile.css';
 import Checkbox from '../../../components/Checkbox';
 import RadioButton from '../../../components/RadioButton';
 import TextArea from '../../../components/TextArea';
 import Button from '../../../components/Button';
-
-const schema = Yup.object().shape({
-  birthday: Yup.string().required('Favor informar a data de nascimento'),
-  gender: Yup.string().required('Favor informar o gênero'),
-  phone: Yup.string(),
-  motivation: Yup.string().required('Favor informar a motivação'),
-  healthCondition: Yup.string(),
-  weight: Yup.number()
-    .positive('Favor informar um peso válido')
-    .required('Favor informar o peso atual'),
-  height: Yup.number()
-    .positive('Favor informar uma altura válida')
-    .required('Favor informar a altura'),
-  availability: Yup.number()
-    .positive('Favor informar um valor válido')
-    .required(
-      'Favor informar quantos dias na semana tem disponível para treinos'
-    ),
-});
+import { useHistory } from 'react-router-dom';
 
 export default function Profile() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const initialValues = {
+    first_name: null,
+    surname: null,
+    email: null,
+    password: null,
+    confirmPassword: null,
     birthday: null,
     gender: null,
     phone: null,
@@ -40,19 +30,38 @@ export default function Profile() {
     healthCondition: null,
     weight: null,
     height: null,
-    availability: null,
+    avatar: null
   };
 
-  const handleSubmit = useCallback(async (data) => {
-    console.log('data', data);
+  const history = useHistory();
+
+  const handleSubmit = async (data) => {
     try {
-      await schema.validate(data, { abortEarly: false });
-      // login(email, password);
-      // history.push('/profile');
+      await api.post('/v2/athlete', {data});
+
+      history.push('/');
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }
+
+  function getBase64(file) {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function(evt) {
+      setSelectedImage(evt.target.result);
+    }); 
+      
+    reader.readAsDataURL(file);
+ }
+
+  const handleFile = (e) => {
+    const file = e.target.files
+
+    if (file.length > 0) {
+      getBase64(e.target.files[0])
+    }
+  }
 
   return (
     <div className='profilebg'>
@@ -60,21 +69,50 @@ export default function Profile() {
         <div className='profileContainer'>
           <div className='userPicture'>
             <div className='avatarContainer'>
-              <img src={Avatar} alt='User Picture' className='avatar' />
+              <input type='file' id='avatar' name='avatar' onChange={e => handleFile(e)} />
+
+              <label htmlFor='avatar' style={{ cursor: 'pointer' }}><img src={selectedImage ? selectedImage : Avatar} alt='User Picture' className='avatar' /></label>
             </div>
 
-            <button className='avatarBtn'>Apagar foto</button>
+            <button className='avatarBtn' onClick={() => setSelectedImage(null)}>Apagar foto</button>
           </div>
 
           <div className='userData'>
-            <h1 className='userName'>Paulo Lima</h1>
-
             <Formik
               initialValues={initialValues}
-              onSubmit={(data) => handleSubmit(data)}
-              validationSchema={schema}
+              onSubmit={(data) => handleSubmit(JSON.stringify({...data, avatar: selectedImage}))}
             >
               <Form className='profileForm'>
+                <Field
+                  type='text'
+                  label='Nome'
+                  name='first_name'
+                  as={Input}
+                />
+                <Field
+                  type='text'
+                  label='Sobrenome'
+                  name='surname'
+                  as={Input}
+                />
+                <Field
+                  type='email'
+                  label='Email'
+                  name='email'
+                  as={Input}
+                />
+                <Field
+                  type='password'
+                  label='Senha'
+                  name='password'
+                  as={Input}
+                />
+                <Field
+                  type='password'
+                  label='Confirmacao de Senha'
+                  name='confirmPassword'
+                  as={Input}
+                />
                 <Field
                   type='date'
                   label='Data de nascimento'
@@ -88,7 +126,7 @@ export default function Profile() {
                       type='radio'
                       id='male'
                       name='gender'
-                      value='male'
+                      value='Masculino'
                       label='Masculino'
                       as={RadioButton}
                     />
@@ -97,7 +135,7 @@ export default function Profile() {
                       type='radio'
                       id='female'
                       name='gender'
-                      value='female'
+                      value='Feminino'
                       label='Feminino'
                       as={RadioButton}
                     />
@@ -125,23 +163,16 @@ export default function Profile() {
                   as={Input}
                 />
                 <Field
-                  type='number'
-                  min='0'
-                  label='Disponibilidade semanal'
-                  name='availability'
-                  as={Input}
-                />
-                <Field
                   type='text'
                   label='Histórico de saúde/Lesões'
                   name='healthCondition'
                   as={TextArea}
                 />
+                <Button type='submit'>CADASTRAR USUARIO</Button>
               </Form>
             </Formik>
           </div>
         </div>
-        <Button>ATUALIZAR PERFIL</Button>
       </div>
     </div>
   );
