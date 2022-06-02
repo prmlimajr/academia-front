@@ -6,6 +6,7 @@ import { FaCamera } from 'react-icons/fa';
 import { Formik, Form, Field } from 'formik';
 import Input from '../../../components/Input';
 import api from '../../../services/api'
+import ChevronLeft from '../../../assets/img/chevron-left.svg';
 
 import './UserProfile.css';
 import Checkbox from '../../../components/Checkbox';
@@ -13,6 +14,7 @@ import RadioButton from '../../../components/RadioButton';
 import TextArea from '../../../components/TextArea';
 import Button from '../../../components/Button';
 import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Profile() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -67,6 +69,12 @@ export default function Profile() {
     <div className='profilebg'>
       <div className='signinContainer'>
         <div className='profileContainer'>
+          <div style={{ marginRight: '30px'}}>
+            <Link to='/' className='back'>
+              <img src={ChevronLeft} alt='voltar' />
+              Voltar
+            </Link>
+          </div>
           <div className='userPicture'>
             <div className='avatarContainer'>
               <input type='file' id='avatar' name='avatar' onChange={e => handleFile(e)} />

@@ -17,11 +17,11 @@ export default function Routes() {
       <Switch>
         <Route path='/login' component={SignIn} />
         <Route path='/signup' component={SignUp} />
-        <Route path='/athlete' exact component={UserProfile} />
-        <Route path='/athlete/:id' exact component={Athlete} />
         <Route path='/instructor' exact component={InstructorProfile} />
         <Route path='/quiz' exact component={Quiz} />
         <PrivateRoute path='/' exact component={Home} />
+        <PrivateRoute path='/athlete/:id' exact component={Athlete} />
+        <PrivateRoute path='/athlete' exact component={UserProfile} />
       </Switch>
     </BrowserRouter>
   );
