@@ -2,8 +2,9 @@ import Api from '../services/api';
 import { setAuthenticated, logout } from '../services/auth';
 
 export async function login(email, password) {
-  const { data } = await Api.post('/session', { email, password });
+  const { data } = await Api.post('/sessions', { email, password });
   const { token, user } = data;
+
   setAuthenticated(token, user);
 }
 

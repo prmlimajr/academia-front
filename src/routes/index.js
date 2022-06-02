@@ -9,6 +9,7 @@ import UserProfile from '../pages/Profile/UserProfile';
 import InstructorProfile from '../pages/Profile/InstructorProfile';
 import Quiz from '../pages/Quiz';
 import Home from '../pages/Home';
+import Athlete from '../pages/Athlete';
 
 export default function Routes() {
   return (
@@ -17,6 +18,7 @@ export default function Routes() {
         <Route path='/login' component={SignIn} />
         <Route path='/signup' component={SignUp} />
         <Route path='/athlete' exact component={UserProfile} />
+        <Route path='/athlete/:id' exact component={Athlete} />
         <Route path='/instructor' exact component={InstructorProfile} />
         <Route path='/quiz' exact component={Quiz} />
         <PrivateRoute path='/' exact component={Home} />

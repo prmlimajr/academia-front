@@ -26,12 +26,13 @@ export default function SignIn() {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = useCallback(async (data) => {
-    console.log('data', data);
     try {
       await schema.validate(data, { abortEarly: false });
-      // login(email, password);
-      history.push('/profile');
+      const { email, password } = data
+      await login(email, password);
+      history.push('/');
     } catch (err) {
+      alert('Falha na requisição');
       console.log(err);
     }
   }, []);

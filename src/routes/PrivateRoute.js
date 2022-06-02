@@ -15,13 +15,13 @@ export default function PrivateRoute({ component: Component, ...rest }) {
             <Component {...props} />
           </div>
         ) : (
-          // <Redirect
-          //   to={{ pathname: '/login', state: { from: props.location } }}
-          // />
-          <div className='row'>
-            <Sidebar />
-            <Component {...props} />
-          </div>
+          <Redirect
+            to={{ pathname: '/login', state: { from: props.location } }}
+          />
+          // <div className='row'>
+          //   <Sidebar />
+          //   <Component {...props} />
+          // </div>
         )
       }
     />
